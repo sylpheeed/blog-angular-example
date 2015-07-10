@@ -1,0 +1,15 @@
+#layout{
+  .page-loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin-left: -70px;
+    margin-top: -70px;
+    .mdl-spinner{
+      width: 70px;
+      height: 70px;
+    }
+  }
+}
