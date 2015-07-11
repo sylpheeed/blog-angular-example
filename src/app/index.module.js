@@ -5,7 +5,7 @@ import routerConfig from './index.route';
 
 import runBlock from './index.run';
 import MainController from './main/main.controller';
-import NavigationDirective from '../app/components/navigation/navigation.directive';
+import SignInController from './sign_in/sign_in.controller';
 import LayoutDirective from '../app/components/layout/layout.directive';
 import UserService from '../app/services/user';
 import params from './index.params';
@@ -19,6 +19,6 @@ angular.module('blogAngularExample', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .config(routerConfig)
   .run(runBlock)
   .controller('MainController', MainController)
-  .directive('navigation', () => new NavigationDirective())
-  .directive('layout', () => new LayoutDirective());
+  .controller('SignInController', SignInController)
+  .directive('layout', ['$timeout', ($timeout) => new LayoutDirective($timeout) ]);
 

@@ -3,8 +3,31 @@
     <div class="mdl-spinner mdl-js-spinner is-active"></div>
   </div>
   <div ng-if="loaded">
-    <div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
-      <navigation />
+    <div id="layout-block" class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
+      <!--<navigation />-->
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Blog example</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="/">Main</a>
+            <a class="mdl-navigation__link" href="/auth/sign_in">Sign In</a>
+            <a class="mdl-navigation__link" href="">Sign Up</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Blog example</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="/">Main</a>
+          <a class="mdl-navigation__link" href="/auth/sign_in">Sign In</a>
+          <a class="mdl-navigation__link" href="">Sign Up</a>
+        </nav>
+      </div>
+
       <main class="mdl-layout__content">
         <div class="page-content">
           <div ng-view></div>
