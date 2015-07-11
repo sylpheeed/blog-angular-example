@@ -1,24 +1,19 @@
 /* global toastr:false, moment:false */
 import config from './index.config';
-
+import directives from './index.directives';
+import controllers from './index.controllers.js';
 import routerConfig from './index.route';
 
 import runBlock from './index.run';
-import MainController from './main/main.controller';
-import SignInController from './sign_in/sign_in.controller';
-import LayoutDirective from '../app/components/layout/layout.directive';
 import UserService from '../app/services/user';
 import params from './index.params';
 
-angular.module('blogAngularExample', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute'])
-  .constant('toastr', toastr)
-  .constant('moment', moment)
-  .value('params', params)
+
+angular.module('blogAngularExample',
+  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute',
+    'blogAngularExample.directives', 'blogAngularExample.controllers'])
   .service('UserService', UserService)
   .config(config)
   .config(routerConfig)
-  .run(runBlock)
-  .controller('MainController', MainController)
-  .controller('SignInController', SignInController)
-  .directive('layout', ['$timeout', ($timeout) => new LayoutDirective($timeout) ]);
+  .run(runBlock);
 

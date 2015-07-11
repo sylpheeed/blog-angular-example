@@ -1,4 +1,6 @@
-function routerConfig ($routeProvider, $locationProvider) {
+//import makeRoutes from 'make-routes';
+
+function routerConfig($routeProvider, $locationProvider) {
   'ngInject';
 
   $locationProvider.html5Mode({
@@ -7,14 +9,16 @@ function routerConfig ($routeProvider, $locationProvider) {
   });
   $routeProvider
     .when('/', {
-      templateUrl: '/app/main/main.html',
-      controller: 'MainController',
-      controllerAs: 'main'
+      templateUrl: '/app/controllers/main/main.html',
+      controller: 'MainController'
     })
     .when('/auth/sign_in', {
-      templateUrl: '/app/sign_in/sign_in.html',
-      controller: 'SignInController',
-      controllerAs: 'main'
+      templateUrl: '/app/controllers/auth/sign_in/sign_in.html',
+      controller: 'SignInController'
+    })
+    .when('/auth/sign_up', {
+      templateUrl: '/app/controllers/auth/sign_up/sign_up.html',
+      controller: 'SignInController'
     })
     .otherwise({
       redirectTo: '/'

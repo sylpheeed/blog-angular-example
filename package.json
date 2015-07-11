@@ -46,6 +46,7 @@
     "karma-phantomjs-launcher": "~0.2.0",
     "lodash": "~3.9.3",
     "main-bower-files": "~2.8.0",
+    "make-routes": "^1.1.0",
     "merge-stream": "~0.1.7",
     "require-dir": "~0.3.0",
     "uglify-save-license": "~0.4.1",
