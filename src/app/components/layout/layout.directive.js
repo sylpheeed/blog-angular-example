@@ -1,20 +1,18 @@
+/*global document:false, componentHandler:false*/
 class LayoutDirective {
-  constructor($timeout) {
+  constructor() {
     'ngInject';
     let directive = {
       restrict: 'E',
       templateUrl: '/app/components/layout/layout.html',
-      scope: {
-        creationDate: '='
-      },
       controller: LayoutController,
-      controllerAs: 'vm',
+      controllerAs: 'layout',
       bindToController: true,
-      link: function postLink() {
-        $timeout(function () {
+      link: function postLink($scope) {
+        $scope.updateBlock = function () {
           var layoutBlock = document.getElementById('layout-block');
           componentHandler.upgradeElement(layoutBlock, 'MaterialLayout');
-        }, 100);
+        };
       }
     };
 
@@ -23,14 +21,18 @@ class LayoutDirective {
 }
 
 class LayoutController {
-  constructor($scope, $timeout) {
+  constructor($scope, UserService, LocaleService) {
     'ngInject';
     $scope.loaded = false;
-
-    $scope.$on('loaded', function (event, args) {
+    Promise.all([
+      UserService.init(),
+      LocaleService.init($scope)
+    ]).then(()=> $scope.ready(), ()=> $scope.ready());
+    $scope.ready = ()=> {
       $scope.loaded = true;
       $scope.$apply();
-    });
+      $scope.updateBlock();
+    };
   }
 }
 

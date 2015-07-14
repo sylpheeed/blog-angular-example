@@ -1,5 +1,4 @@
 /* global toastr:false, moment:false */
-import LayoutDirective from '../app/components/layout/layout.directive';
 import params from './index.params';
 import MainController from './controllers/main/main.controller';
 import Auth from './controllers/auth/index';

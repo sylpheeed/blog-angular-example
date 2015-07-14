@@ -4,4 +4,4 @@ import SignUpController from './sign_up/sign_up.controller';
 export default {
   SignInController,
   SignUpController
-}
+};

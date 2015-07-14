@@ -8,5 +8,5 @@ angular.module('blogAngularExample.directives', [])
   .constant('moment', moment)
   .value('params', params)
   .directive('layout', ['$timeout', ($timeout) => new LayoutDirective($timeout)])
-  .directive('bRoute', ()=> new BRouteDirective);
+  .directive('bRoute', ()=> new BRouteDirective());
 

@@ -1,7 +1,10 @@
-import config from './index.config';
+/* jshint ignore:start */
 import directives from './index.directives';
 import controllers from './index.controllers';
 import services from './index.services';
+/* jshint ignore:end */
+
+import config from './index.config';
 import routerConfig from './index.route';
 import runBlock from './index.run';
 

@@ -1,4 +1,3 @@
-/* global toastr:false, moment:false */
 import params from './index.params';
 import UserService from './services/user.service';
 import LocaleService from './services/locale.service';
