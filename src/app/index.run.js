@@ -1,6 +1,6 @@
-function runBlock($log, UserService, $rootScope) {
+function runBlock($log, UserService, LocaleService, $rootScope) {
   'ngInject';
-  UserService.init().then(()=> {
+  Promise.all([UserService.init(), LocaleService.init()]).then(()=> {
     $rootScope.$broadcast('loaded');
   }, ()=> {
     $rootScope.$broadcast('loaded');

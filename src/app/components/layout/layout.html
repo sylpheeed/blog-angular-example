@@ -13,23 +13,24 @@
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="/">Main</a>
-            <a class="mdl-navigation__link" href="/auth/sign_in">Sign In</a>
-            <a class="mdl-navigation__link" href="">Sign Up</a>
+            <a class="mdl-navigation__link" b-route="root">Main</a>
+            <a class="mdl-navigation__link" b-route="auth_sign_in">Sign In</a>
+            <a class="mdl-navigation__link" b-route="auth_sign_up">Sign Up</a>
           </nav>
         </div>
       </header>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Blog example</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="/">Main</a>
-          <a class="mdl-navigation__link" href="/auth/sign_in">Sign In</a>
-          <a class="mdl-navigation__link" href="">Sign Up</a>
+          <a class="mdl-navigation__link" b-route="root">Main</a>
+          <a class="mdl-navigation__link" b-route="auth_sign_in">Sign In</a>
+          <a class="mdl-navigation__link" b-route="auth_sign_up">Sign Up</a>
         </nav>
       </div>
 
+
       <main class="mdl-layout__content">
-        <div class="page-content">
+        <div id="blog-content" class="mdl-grid">
           <div ng-view></div>
         </div>
       </main>

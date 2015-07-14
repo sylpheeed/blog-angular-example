@@ -1,8 +1,8 @@
-class SignInController {
+class SignUpController {
   constructor() {
     'ngInject';
   }
 
 }
 
-export default SignInController;
+export default SignUpController;

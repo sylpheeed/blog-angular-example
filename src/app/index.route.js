@@ -8,26 +8,22 @@ function routerConfig($routeProvider, $locationProvider) {
     root: {path: '/', to: '/app/controllers/main/main.html', _extra: 'MainController'},
     auth: {
       sign_in: {to: '/app/controllers/auth/sign_in/sign_in.html', _extra: 'SignInController'},
-      sign_up: {to: '/app/controllers/auth/sign_in/sign_up.html', _extra: 'SignUpController'}
+      sign_up: {to: '/app/controllers/auth/sign_up/sign_up.html', _extra: 'SignUpController'}
     }
+  }).each((route)=> {
+    $routeProvider.when(route.path, {
+      templateUrl: route.to,
+      controller: route._extra
+    });
+  }, ()=> {
+    $routeProvider.otherwise({
+      redirectTo: '/'
+    });
   });
 
   $locationProvider.html5Mode({
     enabled: true,
     requireBase: false
-  });
-
-  let routes = makeRoutes.all();
-  for (let route in routes) {
-    let current = routes[route];
-    $routeProvider.when(current.path, {
-      templateUrl: current.to,
-      controller: current._extra
-    });
-  }
-
-  $routeProvider.otherwise({
-    redirectTo: '/'
   });
 }
 

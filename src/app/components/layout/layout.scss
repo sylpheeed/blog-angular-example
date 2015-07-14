@@ -12,4 +12,12 @@
       height: 70px;
     }
   }
+  #blog-content{
+    max-width: 900px;
+    margin: auto;
+    padding-top: 100px;
+    &>div{
+      width: 100%;
+    }
+  }
 }
