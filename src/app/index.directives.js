@@ -1,6 +1,7 @@
 /* global toastr:false, moment:false */
 import LayoutDirective from '../app/components/layout/layout.directive';
 import BRouteDirective from '../app/directives/b-route.directive';
+import MaterialDirective from '../app/directives/material.directive';
 import params from './index.params';
 
 angular.module('blogAngularExample.directives', [])
@@ -8,5 +9,6 @@ angular.module('blogAngularExample.directives', [])
   .constant('moment', moment)
   .value('params', params)
   .directive('layout', ['$timeout', ($timeout) => new LayoutDirective($timeout)])
-  .directive('bRoute', ()=> new BRouteDirective());
+  .directive('bRoute', ()=> new BRouteDirective())
+  .directive('material', ()=> new MaterialDirective());
 

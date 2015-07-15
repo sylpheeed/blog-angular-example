@@ -10,7 +10,7 @@ class LayoutDirective {
       bindToController: true,
       link: function postLink($scope) {
         $scope.updateBlock = function () {
-          var layoutBlock = document.getElementById('layout-block');
+          let layoutBlock = document.getElementById('layout-block');
           componentHandler.upgradeElement(layoutBlock, 'MaterialLayout');
         };
       }
@@ -28,10 +28,11 @@ class LayoutController {
       UserService.init(),
       LocaleService.init($scope)
     ]).then(()=> $scope.ready(), ()=> $scope.ready());
+
     $scope.ready = ()=> {
       $scope.loaded = true;
       $scope.$apply();
-      $scope.updateBlock();
+      //$scope.updateBlock();
     };
   }
 }
