@@ -24,4 +24,10 @@
     text-decoration: none;
     color: white;
   }
+  .errors-field{
+    .mdl-textfield__error{
+      position: relative;
+      visibility: visible;
+    }
+  }
 }

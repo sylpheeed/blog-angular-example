@@ -1,15 +1,16 @@
 class UserService {
-  constructor($http, params) {
+  constructor($http, params, SessionService) {
     'ngInject';
     this._user = {id: false};
     this._host = params.host;
     this.$http = $http;
+    this.SessionService = SessionService
   }
 
   init() {
     return new Promise(
       (resolve, reject)=> {
-        this.$http.get(this._host + '/session').success((data) => {
+        this.SessionService.index().success((data) => {
           this.set(data);
           resolve(data);
         }).error(reject);
