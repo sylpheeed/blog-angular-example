@@ -9,12 +9,13 @@
         <div class="mdl-layout__header-row">
           <!-- Title -->
           <a class="mdl-layout-title app-tittle" b-route="root">Blog example</a>
-          <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We hide it in small screens. -->
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <nav class="mdl-navigation mdl-layout--large-screen-only" ng-if="!user.id">
             <a class="mdl-navigation__link" b-route="auth_sign_in">{{t('layout.navigation.sign_in')}}</a>
             <a class="mdl-navigation__link" b-route="auth_sign_up">{{t('layout.navigation.sign_up')}}</a>
+          </nav>
+          <nav class="mdl-navigation mdl-layout--large-screen-only" ng-if="user.id">
+            <a class="mdl-navigation__link" href="javascript:;" ng-click="signOut()">{{t('layout.navigation.sign_out')}}</a>
           </nav>
         </div>
       </header>

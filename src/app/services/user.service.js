@@ -8,12 +8,14 @@ class UserService {
   }
 
   init() {
+    this.setToken();
     return new Promise(
       (resolve, reject)=> {
-        this.SessionService.index().success((data) => {
-          this.set(data);
-          resolve(data);
-        }).error(reject);
+        this.SessionService.index()
+          .success((response) => {
+            this.set(response.user);
+            resolve(response);
+          }).error(reject);
       }
     );
   }
@@ -26,6 +28,23 @@ class UserService {
 
   get() {
     return this._user;
+  }
+
+  setToken() {
+    let token = localStorage.getItem('Token');
+    if (token && token != 'undefined') {
+      this.$http.defaults.headers.common['Token'] = token;
+    }
+  }
+
+  saveToken(token) {
+    localStorage.setItem('Token', token);
+    this.setToken();
+  }
+
+  removeToken() {
+    localStorage.removeItem('Token');
+    this.set({id: false});
   }
 
 }

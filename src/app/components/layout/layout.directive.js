@@ -7,13 +7,7 @@ class LayoutDirective {
       templateUrl: '/app/components/layout/layout.html',
       controller: LayoutController,
       controllerAs: 'layout',
-      bindToController: true,
-      link: function postLink($scope) {
-        $scope.updateBlock = function () {
-          let layoutBlock = document.getElementById('layout-block');
-          componentHandler.upgradeElement(layoutBlock, 'MaterialLayout');
-        };
-      }
+      bindToController: true
     };
 
     return directive;
@@ -23,7 +17,9 @@ class LayoutDirective {
 class LayoutController {
   constructor($scope, UserService, LocaleService) {
     'ngInject';
+    this.$scope = $scope;
     $scope.loaded = false;
+    this.UserService = UserService;
     Promise.all([
       UserService.init(),
       LocaleService.init($scope)
@@ -32,8 +28,13 @@ class LayoutController {
     $scope.ready = ()=> {
       $scope.loaded = true;
       $scope.$apply();
-      //$scope.updateBlock();
+      $scope.user = UserService.get();
     };
+    $scope.signOut = this.signOut.bind(this);
+  }
+
+  signOut() {
+    this.UserService.removeToken();
   }
 }
 
