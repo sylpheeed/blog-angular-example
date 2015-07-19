@@ -7,7 +7,22 @@ class LayoutDirective {
       templateUrl: '/app/components/layout/layout.html',
       controller: LayoutController,
       controllerAs: 'layout',
-      bindToController: true
+      bindToController: true,
+      link: function (scope, element, attrs) {
+        scope.load = ()=> {
+          //disable mdl layout shadow if active
+          let layoutDrawer = $('.mdl-layout__drawer');
+          let shadow = false;
+          scope.$on('$routeChangeStart', function (next, current) {
+            if (layoutDrawer.hasClass('is-visible')) {
+              if (!shadow) {
+                shadow = $('.mdl-layout__obfuscator');
+              }
+              shadow.trigger('click');
+            }
+          });
+        }
+      }
     };
 
     return directive;
@@ -28,9 +43,13 @@ class LayoutController {
     $scope.ready = ()=> {
       $scope.loaded = true;
       $scope.$apply();
+      $scope.load();
       $scope.user = UserService.get();
     };
     $scope.signOut = this.signOut.bind(this);
+    $scope.isAuthorized = ()=> {
+      return $scope.user && $scope.user.id;
+    }
   }
 
   signOut() {

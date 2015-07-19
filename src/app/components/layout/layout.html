@@ -9,25 +9,30 @@
         <div class="mdl-layout__header-row">
           <!-- Title -->
           <a class="mdl-layout-title app-tittle" b-route="root">Blog example</a>
+
           <div class="mdl-layout-spacer"></div>
-          <nav class="mdl-navigation mdl-layout--large-screen-only" ng-if="!user.id">
+          <nav class="mdl-navigation mdl-layout--large-screen-only" ng-if="!isAuthorized()">
             <a class="mdl-navigation__link" b-route="auth_sign_in">{{t('layout.navigation.sign_in')}}</a>
             <a class="mdl-navigation__link" b-route="auth_sign_up">{{t('layout.navigation.sign_up')}}</a>
           </nav>
-          <nav class="mdl-navigation mdl-layout--large-screen-only" ng-if="user.id">
-            <a class="mdl-navigation__link" href="javascript:;" ng-click="signOut()">{{t('layout.navigation.sign_out')}}</a>
+          <nav class="mdl-navigation mdl-layout--large-screen-only" ng-if="isAuthorized()">
+            <a class="mdl-navigation__link" href="javascript:;"
+               ng-click="signOut()">{{t('layout.navigation.sign_out')}}</a>
           </nav>
         </div>
       </header>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Blog example</span>
-        <nav class="mdl-navigation">
+        <nav class="mdl-navigation" ng-if="!isAuthorized()">
           <a class="mdl-navigation__link" b-route="root">{{t('layout.navigation.main')}}</a>
           <a class="mdl-navigation__link" b-route="auth_sign_in">{{t('layout.navigation.sign_in')}}</a>
           <a class="mdl-navigation__link" b-route="auth_sign_up">{{t('layout.navigation.sign_up')}}</a>
         </nav>
+        <nav class="mdl-navigation" ng-if="isAuthorized()">
+          <a class="mdl-navigation__link" href="javascript:;"
+             ng-click="signOut()">{{t('layout.navigation.sign_out')}}</a>
+        </nav>
       </div>
-
 
       <main class="mdl-layout__content">
         <div id="blog-content" class="mdl-grid">

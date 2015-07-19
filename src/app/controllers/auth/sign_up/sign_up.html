@@ -7,13 +7,13 @@
     <div class="mdl-card__supporting-text ">
       <div>
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="email" ng-model="user.email"/>
+          <input class="mdl-textfield__input" type="text" id="email" ng-model="newUser.email"/>
           <label class="mdl-textfield__label" for="email">{{t('auth.email')}}</label>
         </div>
       </div>
       <div>
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="password" id="password" ng-model="user.password"/>
+          <input class="mdl-textfield__input" type="password" id="password" ng-model="newUser.password"/>
           <label class="mdl-textfield__label" for="password">{{t('auth.password')}}</label>
         </div>
       </div>
@@ -24,7 +24,7 @@
     <div class="mdl-card__actions mdl-card--border">
       <!-- Accent-colored raised button with ripple -->
       <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
-             value="{{t('auth.sign_up')}}" ng-click="signUp(user)"/>
+             value="{{t('auth.sign_up')}}" ng-click="signUp(newUser)"/>
 
       <a b-route="auth_sign_in" class="mdl-button mdl-js-button mdl-js-ripple-effect">
         {{t('auth.sign_in')}}

@@ -1,8 +1,11 @@
+import makeRoutes from 'make-routes';
+
 class SignUpController {
-  constructor($scope, RegistrationService, UserService) {
+  constructor($scope, RegistrationService, UserService, $location) {
     'ngInject';
     this.RegistrationService = RegistrationService;
     this.UserService = UserService;
+    this.$location = $location;
     this.$scope = $scope;
     this.$scope.signUp = this.signUp.bind(this);
   }
@@ -18,6 +21,7 @@ class SignUpController {
       (response)=> {
         this.UserService.saveToken(response.data.token);
         this.UserService.set(response.data.user);
+        this.$location.path(makeRoutes.route('root'));
       },
       (response)=> {
         if (response.data) {
